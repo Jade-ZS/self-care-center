@@ -58,7 +58,8 @@ function showMessage(event) {
 
 // interation 3: user can favorite a message
 // data model
-/** When the “Favorite” button is clicked, that message should be added to a new list of favorite messages.*/
+/** When the “Favorite” button is clicked, that message
+ *  should be added to a new list of favorite messages.*/
 function addFavoriteMessage() {
     if (!favoriteMessages.includes(displayedMessage)) {
         favoriteMessages.push(displayedMessage);
@@ -78,11 +79,9 @@ function showFavoriteMessages() {
 
 // show
     favoritesView.classList.remove('hidden');
-
 }
 
 function renderFavView() {
-    console.log('here')
     favMessagesWrapper.innerHTML = '';
     
     for (var i = 0; i < favoriteMessages.length; i++) {
