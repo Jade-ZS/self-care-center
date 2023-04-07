@@ -51,6 +51,10 @@ button {
     height: 17.5px;
 }
 
+#favorite-button-container {
+    display: flex;
+}
+
 input[type="radio"] {
    margin-top: 15px;
 }
