@@ -3,11 +3,14 @@ var submitButton = document.querySelector('button');
 var messageBox = document.querySelector('#messageBox');
 var img = document.querySelector('img')
 var choices = document.getElementsByName('message-choices');
+var randomMessage = document.querySelector('#random-message');
+var addButton = document.querySelector('#add-message');
 
 var displayedMessage;
 
 // event listeners
 submitButton.addEventListener('click', getMessage);
+window.addEventListener('load', () => {addButton.classList.add('hidden')});
 
 // event handlers
 function getRandomIndex(array) {
@@ -26,6 +29,7 @@ function getMessage(event) {
             }
             
             displayedMessage = messages[getRandomIndex(messages)];
+            addButton.classList.remove('hidden');
             showMessage(event);
         }
     }
@@ -35,7 +39,7 @@ function getMessage(event) {
 function showMessage(event) {
     event.preventDefault();
     img.classList.add('hidden');
-    messageBox.innerHTML = `<span id='random-message'>${displayedMessage}</span>`;
+    randomMessage.innerText = displayedMessage;
 }
 
 
