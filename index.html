@@ -5,20 +5,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div><h1>✨ Self Care Center ✨</h1></div>
-    <p id="type-of-message">Which type of message?</p>
+    <h1>✨ Self Care Center ✨</h1>
+    <div>
+      <p id="type-of-message">Which type of message?</p>
       <form id="survey-form">
         <span id="choice1">
-          <input id="affirmation" type="radio" value="affirmation" name="message-choice">
+          <input id="affirmation" type="radio" value="affirmations" name="message-choices">
           <label for="affirmation"> affirmation </label>
         </span>
-        <input id="mantra" type="radio" value="mantra" name="message-choice">
-        <label for="mantra">mantra</label><br>
+        <span id="choice2">
+          <input id="mantra" type="radio" value="mantras" name="message-choices">
+          <label for="mantra">mantra</label><br>
+        </span>
         <button type="submit"><span id="receive-message">Receive Message<span></button><br>
       </form>
-    <img src="./assets/meditate.svg" alt="meditation image">
+    </div>
+    <div id="messageBox">
+      <img src="./assets/meditate.svg" alt="meditation image">
+    </div>
   
+    <script type="text/javascript" src="data.js"></script>
     <script type="text/javascript" src="main.js"></script>
-      
   </body>
 </html>
