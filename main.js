@@ -18,7 +18,7 @@ var favoriteMessages = [];
 // event listeners
 submitButton.addEventListener('click', getMessage);
 favoriteButton.addEventListener('click', addFavoriteMessage);
-viewFavoriteButton.addEventListener('click', showFavoriteMessages);
+viewFavoriteButton.addEventListener('click', renderFavView);
 homeButton.addEventListener('click', showHome);
 
 // event handlers
@@ -78,15 +78,29 @@ function showFavoriteMessages() {
 
 // show
     favoritesView.classList.remove('hidden');
+
+}
+
+function renderFavView() {
+    console.log('here')
     favMessagesWrapper.innerHTML = '';
-    favoriteMessages.forEach(element => favMessagesWrapper.innerHTML += `
-    <div class="edge-wrapper">
-        <div class="item-wrapper">
-            <p class="messageBox fav-box">${element}</p>
-            <button id="delete-from-favs" type="submit">remove</button>
-        </div>
-    </div>`
-    );
+    
+    for (var i = 0; i < favoriteMessages.length; i++) {
+        favMessagesWrapper.innerHTML += `
+            <div class="edge-wrapper">
+                <div class="item-wrapper">
+                    <p class="messageBox fav-box">${favoriteMessages[i]}</p>
+                    <button class="delete-from-favs" id=${i} type="submit">remove</button>
+                </div>
+            </div>`;
+            console.log(favMessagesWrapper.innerHTML);
+        
+        var id = i.toString();
+        var removeFav = document.getElementById(id);
+        removeFav.addEventListener('click', deleteFav);
+    }
+
+    showFavoriteMessages();
 }
 
 function showHome() {
@@ -99,6 +113,10 @@ function showHome() {
     randomMessage.classList.add('hidden');
 }
 
-
+function deleteFav(event) {
+    var index = parseInt(event.target.id);
+    favoriteMessages.splice(index, 1);
+    renderFavView();
+}
 
 
