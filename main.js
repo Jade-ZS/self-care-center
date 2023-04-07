@@ -9,6 +9,8 @@ var viewFavoriteButton = document.querySelector('#view-favorite');
 var favButtons = document.querySelector('#favorite-buttons-wrapper')
 var homeView = document.querySelector('.home-view');
 var favoritesView = document.querySelector('.favorites-view');
+var favMessagesWrapper = document.querySelector('#fav-messages-wrapper');
+var homeButton = document.querySelector('#home-button');
 
 var displayedMessage;
 var favoriteMessages = [];
@@ -17,6 +19,7 @@ var favoriteMessages = [];
 submitButton.addEventListener('click', getMessage);
 favoriteButton.addEventListener('click', addFavoriteMessage);
 viewFavoriteButton.addEventListener('click', showFavoriteMessages);
+homeButton.addEventListener('click', showHome);
 
 // event handlers
 function getRandomIndex(array) {
@@ -75,10 +78,21 @@ function showFavoriteMessages() {
 
 // show
     favoritesView.classList.remove('hidden');
-    favoritesView.innerHTML = '';
-    favoriteMessages.forEach(element => favoritesView.innerHTML += `<p>${element}</p>`);
+    favMessagesWrapper.innerHTML = '';
+    favoriteMessages.forEach(element => favMessagesWrapper.innerHTML += `<p class="messageBox fav-box">${element}</p>`);
 }
 
+function showHome() {
+    homeView.classList.remove('hidden');
+    messageBox.classList.remove('hidden');
+    img.classList.remove('hidden');
+
+    favoritesView.classList.add('hidden');
+    favButtons.classList.add('hidden');
+    randomMessage.classList.add('hidden');
+    
+    
+}
 
 
 
