@@ -79,7 +79,14 @@ function showFavoriteMessages() {
 // show
     favoritesView.classList.remove('hidden');
     favMessagesWrapper.innerHTML = '';
-    favoriteMessages.forEach(element => favMessagesWrapper.innerHTML += `<p class="messageBox fav-box">${element}</p>`);
+    favoriteMessages.forEach(element => favMessagesWrapper.innerHTML += `
+    <div class="edge-wrapper">
+        <div class="item-wrapper">
+            <p class="messageBox fav-box">${element}</p>
+            <button id="delete-from-favs" type="submit">remove</button>
+        </div>
+    </div>`
+    );
 }
 
 function showHome() {
@@ -90,8 +97,6 @@ function showHome() {
     favoritesView.classList.add('hidden');
     favButtons.classList.add('hidden');
     randomMessage.classList.add('hidden');
-    
-    
 }
 
 
