@@ -26,7 +26,7 @@ h1 {
     color: white;
 }
 
-p {
+#type-of-message {
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -44,12 +44,15 @@ form {
 button {
     margin-top: 20px;
     background-color: #134d71;
+    color: white;
     border-radius: 5px;
     border-style: hidden;
+    width: 117.97px;
+    height: 17.5px;
 }
 
-#receive-message {
-    color: white;
+#favorite-button-container {
+    display: flex;
 }
 
 input[type="radio"] {
@@ -62,9 +65,10 @@ input[type="radio"] {
 
 #messageBox {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 800px;
+    width: 810px;
     height: 150px;
     border-radius: 8px;
     background-color: white;
