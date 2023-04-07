@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>✨ Self Care Center ✨</h1>
-    <div>
+    <section class="home-view">
       <p id="type-of-message">Which type of message?</p>
       <form id="survey-form">
         <span id="choice1">
@@ -19,15 +19,18 @@
         </span>
         <button type="submit">Receive Message</button><br>
       </form>
-    </div>
-    <div id="messageBox">
+    </section>
+
+    <div class="messageBox">
       <img src="./assets/meditate.svg" alt="meditation image">
-      <p id="random-message"></p>
-      <div id="favorite-buttons-container">
+      <p id="random-message" class="hidden"></p>
+      <div id="favorite-buttons-wrapper" class="hidden">
         <button id="favorite-message" type="submit">Favorite</button>
         <button id="view-favorite" type ='submit'>View Favorite</button>
       </div>
     </div>
+
+    <section class="favorites-view hidden"></section>
   
     <script type="text/javascript" src="data.js"></script>
     <script type="text/javascript" src="main.js"></script>

@@ -1,22 +1,22 @@
 // variables
 var submitButton = document.querySelector('button');
-var messageBox = document.querySelector('#messageBox');
+var messageBox = document.querySelector('.messageBox');
 var img = document.querySelector('img')
 var choices = document.getElementsByName('message-choices');
 var randomMessage = document.querySelector('#random-message');
 var favoriteButton = document.querySelector('#favorite-message');
 var viewFavoriteButton = document.querySelector('#view-favorite');
+var favButtons = document.querySelector('#favorite-buttons-wrapper')
+var homeView = document.querySelector('.home-view');
+var favoritesView = document.querySelector('.favorites-view');
 
 var displayedMessage;
 var favoriteMessages = [];
 
 // event listeners
 submitButton.addEventListener('click', getMessage);
-window.addEventListener('load', function() {
-    favoriteButton.classList.add('hidden');
-    viewFavoriteButton.classList.add('hidden');
-});
 favoriteButton.addEventListener('click', addFavoriteMessage);
+viewFavoriteButton.addEventListener('click', showFavoriteMessages);
 
 // event handlers
 function getRandomIndex(array) {
@@ -37,8 +37,6 @@ function getMessage(event) {
             }
             
             displayedMessage = messages[getRandomIndex(messages)];
-            favoriteButton.classList.remove('hidden');
-            viewFavoriteButton.classList.remove('hidden');
             showMessage(event);
         }
     }
@@ -49,6 +47,8 @@ function getMessage(event) {
 function showMessage(event) {
     event.preventDefault();
     img.classList.add('hidden');
+    randomMessage.classList.remove('hidden');
+    favButtons.classList.remove('hidden');
     randomMessage.innerText = displayedMessage;
 }
 
@@ -65,8 +65,18 @@ function addFavoriteMessage() {
 
 // DOM
 function showFavoriteMessages() {
-/**Users should be able to view their favorites by clicking a “View Favorites” button that exists somewhere on the page */
+/** When the “View Favorites” button is clicked,
+* users should be taken to a new page that displays
+* all of their favorite messages.*/
+//hide
+    homeView.classList.add('hidden');
+    favButtons.classList.add('hidden');  
+    messageBox.classList.add('hidden');
 
+// show
+    favoritesView.classList.remove('hidden');
+    favoritesView.innerHTML = '';
+    favoriteMessages.forEach(element => favoritesView.innerHTML += `<p>${element}</p>`);
 }
 
 
