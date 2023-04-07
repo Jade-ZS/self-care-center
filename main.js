@@ -7,10 +7,12 @@ var randomMessage = document.querySelector('#random-message');
 var favoriteButton = document.querySelector('#favorite-message');
 
 var displayedMessage;
+var favoriteMessages = [];
 
 // event listeners
 submitButton.addEventListener('click', getMessage);
 window.addEventListener('load', () => {favoriteButton.classList.add('hidden')});
+favoriteButton.addEventListener('click', addFavoriteMessage);
 
 // event handlers
 function getRandomIndex(array) {
@@ -18,6 +20,7 @@ function getRandomIndex(array) {
     return index;
 }
 
+// data modle
 function getMessage(event) {
     var messages;
     for (var i = 0; i < choices.length; i++) {
@@ -36,10 +39,20 @@ function getMessage(event) {
 }
 
 
+// DOM
 function showMessage(event) {
     event.preventDefault();
     img.classList.add('hidden');
     randomMessage.innerText = displayedMessage;
+}
+
+
+// data modle
+function addFavoriteMessage() {
+    if (!favoriteMessages.includes(displayedMessage)) {
+        favoriteMessages.push(displayedMessage);
+    }
+
 }
 
 
