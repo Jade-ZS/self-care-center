@@ -58,8 +58,6 @@ function showMessage(event) {
 
 // interation 3: user can favorite a message
 // data model
-/** When the “Favorite” button is clicked, that message
- *  should be added to a new list of favorite messages.*/
 function addFavoriteMessage() {
     if (!favoriteMessages.includes(displayedMessage)) {
         favoriteMessages.push(displayedMessage);
@@ -69,9 +67,6 @@ function addFavoriteMessage() {
 
 // DOM
 function showFavoriteMessages() {
-/** When the “View Favorites” button is clicked,
-* users should be taken to a new page that displays
-* all of their favorite messages.*/
 //hide
     homeView.classList.add('hidden');
     favButtons.classList.add('hidden');  
@@ -85,21 +80,32 @@ function renderFavView() {
     favMessagesWrapper.innerHTML = '';
     
     for (var i = 0; i < favoriteMessages.length; i++) {
+        var id = i.toString();
         favMessagesWrapper.innerHTML += `
             <div class="edge-wrapper">
                 <div class="item-wrapper">
                     <p class="messageBox fav-box">${favoriteMessages[i]}</p>
-                    <button class="delete-from-favs" id=${i} type="submit">remove</button>
+                    <button class="delete-from-favs" id=${id} type="submit">remove</button>
                 </div>
             </div>`;
-            console.log(favMessagesWrapper.innerHTML);
-        
-        var id = i.toString();
-        var removeFav = document.getElementById(id);
-        removeFav.addEventListener('click', deleteFav);
     }
-
+    
+    enableRemoveButtons();
     showFavoriteMessages();
+}
+
+function enableRemoveButtons() {
+    var itemWrappers = document.querySelectorAll('.item-wrapper');
+    for (var i = 0; i < itemWrappers.length; i++) {
+        itemWrappers[i].addEventListener('click', (event) => {
+            var isButton = event.target.nodeName === 'BUTTON';
+            if (!isButton) {
+                return;
+            } else {
+                deleteFav(event);
+            }
+        })
+    }
 }
 
 function showHome() {
@@ -114,6 +120,7 @@ function showHome() {
 
 function deleteFav(event) {
     var index = parseInt(event.target.id);
+    console.log('index', index);
     favoriteMessages.splice(index, 1);
     renderFavView();
 }
