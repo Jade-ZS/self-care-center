@@ -56,11 +56,20 @@ function showMessage(event) {
 }
 
 
+/**
+ * 1. connect data model with local storage
+ *  (1) add
+ *  (2) remove
+ * 2. update dom based on local storage
+ */
+
 // interation 3: user can favorite a message
 // data model
 function addFavoriteMessage() {
     if (!favoriteMessages.includes(displayedMessage)) {
+        localStorage.setItem(`${favoriteMessages.length}`, displayedMessage);
         favoriteMessages.push(displayedMessage);
+        console.log(localStorage);
     }
 
 }
@@ -120,8 +129,9 @@ function showHome() {
 
 function deleteFav(event) {
     var index = parseInt(event.target.id);
-    console.log('index', index);
+    localStorage.removeItem(`${index}`); love youuuuuuuuuu;
     favoriteMessages.splice(index, 1);
+    console.log(localStorage);
     renderFavView();
 }
 
