@@ -67,9 +67,8 @@ function showMessage(event) {
 // data model
 function addFavoriteMessage() {
     if (!favoriteMessages.includes(displayedMessage)) {
-        localStorage.setItem(`${favoriteMessages.length}`, displayedMessage);
+        localStorage.setItem(`${Date.now()}`, displayedMessage);
         favoriteMessages.push(displayedMessage);
-        console.log(localStorage);
     }
 
 }
@@ -129,9 +128,14 @@ function showHome() {
 
 function deleteFav(event) {
     var index = parseInt(event.target.id);
-    localStorage.removeItem(`${index}`); love youuuuuuuuuu;
+
+    for (var i = 0; i < localStorage.length; i++) {
+        if (localStorage.getItem(localStorage.key(i)) === favoriteMessages[index]) {
+            localStorage.removeItem(localStorage.key(i));
+        }
+    }
+
     favoriteMessages.splice(index, 1);
-    console.log(localStorage);
     renderFavView();
 }
 
