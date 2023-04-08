@@ -87,13 +87,16 @@ function showFavoriteMessages() {
 function renderFavView() {
     favMessagesWrapper.innerHTML = '';
     
-    for (var i = 0; i < favoriteMessages.length; i++) {
-        var id = i.toString();
+    for (var i = 0; i < localStorage.length; i++) {
+        // var id = i.toString();
+        var message = localStorage.getItem(localStorage.key(i));
+        var index = favoriteMessages.indexOf(message);
+
         favMessagesWrapper.innerHTML += `
             <div class="edge-wrapper">
                 <div class="item-wrapper">
-                    <p class="messageBox fav-box">${favoriteMessages[i]}</p>
-                    <button class="delete-from-favs" id=${id} type="submit">remove</button>
+                    <p class="messageBox fav-box">${message}</p>
+                    <button class="delete-from-favs" id=${index} type="submit">remove</button>
                 </div>
             </div>`;
     }
