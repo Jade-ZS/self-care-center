@@ -27,8 +27,6 @@ function getRandomIndex(array) {
     return index;
 }
 
-// iteration 1: show random message
-// data model
 function getMessage(event) {
     var messages;
     for (var i = 0; i < choices.length; i++) {
@@ -45,8 +43,6 @@ function getMessage(event) {
     }
 }
 
-
-// DOM
 function showMessage(event) {
     event.preventDefault();
     img.classList.add('hidden');
@@ -55,16 +51,6 @@ function showMessage(event) {
     randomMessage.innerText = displayedMessage;
 }
 
-
-/**
- * 1. connect data model with local storage
- *  (1) add
- *  (2) remove
- * 2. update dom based on local storage
- */
-
-// interation 3: user can favorite a message
-// data model
 function addFavoriteMessage() {
     if (!favoriteMessages.includes(displayedMessage)) {
         localStorage.setItem(`${Date.now()}`, displayedMessage);
@@ -73,14 +59,13 @@ function addFavoriteMessage() {
 
 }
 
-// DOM
 function showFavoriteMessages() {
-//hide
+    //hide
     homeView.classList.add('hidden');
     favButtons.classList.add('hidden');  
     messageBox.classList.add('hidden');
 
-// show
+    // show
     favoritesView.classList.remove('hidden');
 }
 
@@ -88,15 +73,13 @@ function renderFavView() {
     favMessagesWrapper.innerHTML = '';
     
     for (var i = 0; i < localStorage.length; i++) {
-        // var id = i.toString();
         var message = localStorage.getItem(localStorage.key(i));
-        var index = favoriteMessages.indexOf(message);
 
         favMessagesWrapper.innerHTML += `
             <div class="edge-wrapper">
                 <div class="item-wrapper">
                     <p class="messageBox fav-box">${message}</p>
-                    <button class="delete-from-favs" id=${index} type="submit">remove</button>
+                    <button class="delete-from-favs" id=${localStorage.key(i)} type="submit">remove</button>
                 </div>
             </div>`;
     }
@@ -105,6 +88,7 @@ function renderFavView() {
     showFavoriteMessages();
 }
 
+// event listener for removal buttons
 function enableRemoveButtons() {
     var itemWrappers = document.querySelectorAll('.item-wrapper');
     for (var i = 0; i < itemWrappers.length; i++) {
@@ -130,14 +114,9 @@ function showHome() {
 }
 
 function deleteFav(event) {
-    var index = parseInt(event.target.id);
-
-    for (var i = 0; i < localStorage.length; i++) {
-        if (localStorage.getItem(localStorage.key(i)) === favoriteMessages[index]) {
-            localStorage.removeItem(localStorage.key(i));
-        }
-    }
-
+    localStorage.removeItem(event.target.id);
+    var message = localStorage.getItem(event.target.id);
+    var index = favoriteMessages.indexOf(message);
     favoriteMessages.splice(index, 1);
     renderFavView();
 }
