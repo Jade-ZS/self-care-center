@@ -19,9 +19,11 @@ Users can choose a message type, either "mantra" or "affirmation", and generate 
 
 
 Users can click the "favorite" button to favorite a message and see their favorite messages by clicking the "view favorite" button. When favorite messages are displayed, users can use the "return home" button to return to the home page. The application will keep record of users' favorite messages. Even when the webpage is refreshed, previous favorite messages will still be stored. 
+
 ![fav](https://user-images.githubusercontent.com/123802263/230741854-46db3587-e4b4-4c30-9d22-4ade28c1cd75.gif)
 
 Users can "un-favorite" a message by simply clicking the "remove" button.
+
  ![remove](https://user-images.githubusercontent.com/123802263/230741858-f1f6944e-4805-4e09-8c7a-14606141bfb8.gif)
 
 
