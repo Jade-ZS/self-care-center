@@ -8,6 +8,7 @@ The spec for this project can be found [here](https://frontend.turing.edu/projec
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
+Vist [this website](https://jade-zs.github.io/self-care-center/) or follow the following steps
 1. Copy repository `SSH link`.
 2. Run `git clone` followed by the `SSH link` in your `terminal`.
 3. Move into the `self-care-center` directory using the `cd` command in your `terminal`.
