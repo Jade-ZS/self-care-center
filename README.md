@@ -4,8 +4,6 @@
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
 This application allows users to select a message option and receive a random piece of mantra or affirmation. User can also favorite the messages they like for future reference. This applications makes it easy for the users to create their own favorite message collections and empower people with meaningful words. 
 
-The spec for this project can be found [here](https://frontend.turing.edu/projects/module-1/self-care-center.html).
-
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
 Vist [this website](https://jade-zs.github.io/self-care-center/) or follow the following steps
